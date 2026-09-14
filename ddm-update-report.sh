@@ -1,26 +1,12 @@
 #!/bin/bash
 #
+# Created By: Ian Myers
+#
 # ddm-update-report.sh
 #
 # Collects DDM software update enforcement status and writes it to two Jamf Pro
 # extension attributes via the API. Designed to run once daily from a policy
 # rather than on every recon.
-#
-# ===========================================================================
-# WHY THIS IS A POLICY AND NOT EXTENSION ATTRIBUTE SCRIPTS
-#
-# The earlier version of this project used three script-type extension
-# attributes. Every recon ran all three, and one of them made two `profiles`
-# calls capped at six seconds each. That is potentially 12+ seconds added to
-# every inventory submission on every Mac, for data that changes once a day.
-#
-# Jamf's own documentation notes that extension attributes "may add time and
-# network traffic to the inventory collection process."
-#
-# This script does the work once daily and writes the results straight into
-# Jamf Pro. The extension attributes become Text Field type, which execute
-# nothing at recon. Inventory cost drops to zero.
-# ===========================================================================
 #
 # ---------------------------------------------------------------------------
 # JAMF PRO SETUP
